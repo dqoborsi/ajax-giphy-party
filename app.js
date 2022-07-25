@@ -1,6 +1,6 @@
 const searchBtn = $('#search-btn');
 
-searchBtn.on('click', function(e){
+searchBtn.on('click', async function(e){
   // use the value of the input as the search term once we submit it
   e.preventDefault();
   async function getGiphyInfo() {
@@ -9,7 +9,7 @@ searchBtn.on('click', function(e){
     console.log('got:', response.data);
     return response;
   }
-  let arrayOfGiphyObjs = getGiphyInfo();
+  let arrayOfGiphyObjs = await getGiphyInfo();
   console.log('arrayOfGiphyObjs:', arrayOfGiphyObjs)
 
   // random index of array
@@ -18,10 +18,6 @@ searchBtn.on('click', function(e){
   let newGiphy = $('<img>').attr('src', `${arrayOfGiphyObjs[randomIndex].url}`);
 
   $('#giphys-div').append(newGiphy)
-
-
   console.log(getGiphyInfo());
-
-
 });
 
