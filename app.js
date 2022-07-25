@@ -7,7 +7,7 @@ searchBtn.on('click', async function(e){
     let searchTerm = $('#search-term-input').val();
     let response = await axios.get(`http://api.giphy.com/v1/gifs/search?q=${searchTerm}&api_key=MhAodEJIJxQMxW9XqxKjyXfNYdLoOIym`);
     console.log('got:', response.data);
-    return response;
+    return response.data.data;
   }
   let arrayOfGiphyObjs = await getGiphyInfo();
   console.log('arrayOfGiphyObjs:', arrayOfGiphyObjs)
